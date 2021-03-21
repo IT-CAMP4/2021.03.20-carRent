@@ -16,25 +16,15 @@ public class App {
             gui.showMainMenu();
             switch (reader.readLine()) {
                 case "1":
-                    gui.showAllCars(database.getCars());
-                    gui.showAllBuses(database.getBuses());
-                    gui.showAllMotorcycles(database.getMotorcycles());
+                    gui.showAllVehicles(database.getVehicles());
                     break;
                 case "2":
                     System.out.println("Podaj numer rejestracyjny pojazd:");
-                    if(database.rentVehicle(reader.readLine())) {
-                        System.out.println("Wypożyczono !!");
-                    } else {
-                        System.out.println("Nie znaleziono pojazdu lub pojazd jest już wypożyczony !!");
-                    }
+                    gui.showRentResult(database.rentVehicle(reader.readLine()));
                     break;
                 case "3":
                     System.out.println("Podaj numer rejestracyjny pojazdu:");
-                    if(database.returnVehicle(reader.readLine())) {
-                        System.out.println("Oddano !!");
-                    } else {
-                        System.out.println("Nie znaleziono pojazdu lub pojazd nie jest wypożyczony !!");
-                    }
+                    gui.showReturnResult(database.returnVehicle(reader.readLine()));
                     break;
                 case "4":
                     flag = false;

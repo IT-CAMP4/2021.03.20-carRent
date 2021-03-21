@@ -1,8 +1,8 @@
 package pl.camp.it.car.rent.gui;
 
 import pl.camp.it.car.rent.model.Bus;
-import pl.camp.it.car.rent.model.Car;
 import pl.camp.it.car.rent.model.Motorcycle;
+import pl.camp.it.car.rent.model.Vehicle;
 
 public class GUI {
     public void showMainMenu() {
@@ -12,74 +12,58 @@ public class GUI {
         System.out.println("4. Wyjdź");
     }
 
-    public void showAllCars(Car[] cars) {
-        for(Car car : cars) {
+    public void showAllVehicles(Vehicle[] vehicles) {
+        for(Vehicle vehicle : vehicles) {
             StringBuilder sb = new StringBuilder();
-            sb.append(car.getBrand())
+            sb.append(vehicle.getBrand())
                     .append(" ")
-                    .append(car.getModel())
+                    .append(vehicle.getModel())
                     .append(" rok produkcji: ")
-                    .append(car.getYear())
+                    .append(vehicle.getYear())
                     .append(" przebieg: ")
-                    .append(car.getMileage())
+                    .append(vehicle.getMileage())
                     .append(" cena: ")
-                    .append(car.getPrice())
+                    .append(vehicle.getPrice())
                     .append(" rejestracja: ")
-                    .append(car.getPlate())
-                    .append(" dostępny: ")
-                    .append(car.isRent() ? "Nie" : "Tak");
+                    .append(vehicle.getPlate());
+
+            if(vehicle instanceof Bus) {
+                Bus bus = (Bus) vehicle;
+                sb.append(" ilość miejsc: ")
+                        .append(bus.getSeats())
+                        .append(" niskopodłogowy: ")
+                        .append(bus.isLowRider() ? "Tak" : "Nie");
+            }
+
+            if(vehicle instanceof Motorcycle) {
+                Motorcycle motorcycle = (Motorcycle) vehicle;
+                sb.append(" dostawka: ")
+                        .append(motorcycle.isExtraSeat() ? "Tak" : "Nie")
+                        .append(" typ: ")
+                        .append(motorcycle.getType());
+            }
+
+            sb.append(" dostępny: ")
+                    .append(vehicle.isRent() ? "Nie" : "Tak");
+
 
             System.out.println(sb.toString());
         }
     }
 
-    public void showAllBuses(Bus[] buses) {
-        for(Bus bus : buses) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(bus.getBrand())
-                    .append(" ")
-                    .append(bus.getModel())
-                    .append(" rok produkcji: ")
-                    .append(bus.getYear())
-                    .append(" przebieg: ")
-                    .append(bus.getMileage())
-                    .append(" cena: ")
-                    .append(bus.getPrice())
-                    .append(" rejestracja: ")
-                    .append(bus.getPlate())
-                    .append(" ilość miejsc: ")
-                    .append(bus.getSeats())
-                    .append(" niskopodłogowy: ")
-                    .append(bus.isLowRider() ? "Tak" : "Nie")
-                    .append(" dostępny: ")
-                    .append(bus.isRent() ? "Nie" : "Tak");
-
-            System.out.println(sb.toString());
+    public void showRentResult(boolean rentResult) {
+        if(rentResult) {
+            System.out.println("Wypożyczono !!");
+        } else {
+            System.out.println("Nie znaleziono pojazdu lub pojazd jest już wypożyczony !!");
         }
     }
 
-    public void showAllMotorcycles(Motorcycle[] motorcycles) {
-        for(Motorcycle motorcycle : motorcycles) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(motorcycle.getBrand())
-                    .append(" ")
-                    .append(motorcycle.getModel())
-                    .append(" rok produkcji: ")
-                    .append(motorcycle.getYear())
-                    .append(" przebieg: ")
-                    .append(motorcycle.getMileage())
-                    .append(" cena: ")
-                    .append(motorcycle.getPrice())
-                    .append(" rejestracja: ")
-                    .append(motorcycle.getPlate())
-                    .append(" dostawka: ")
-                    .append(motorcycle.isExtraSeat() ? "Tak" : "Nie")
-                    .append(" typ: ")
-                    .append(motorcycle.getType())
-                    .append(" dostępny: ")
-                    .append(motorcycle.isRent() ? "Nie" : "Tak");
-
-            System.out.println(sb.toString());
+    public void showReturnResult(boolean returnResult) {
+        if(returnResult) {
+            System.out.println("Oddano !!");
+        } else {
+            System.out.println("Nie znaleziono pojazdu lub pojazd nie jest wypożyczony !!");
         }
     }
 }
