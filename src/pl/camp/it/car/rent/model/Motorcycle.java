@@ -1,6 +1,6 @@
 package pl.camp.it.car.rent.model;
 
-public class Bus {
+public class Motorcycle {
     private String brand;
     private String model;
     private int mileage;
@@ -8,17 +8,12 @@ public class Bus {
     private double price;
     private String plate;
     private boolean rent;
-    private int seats;
-    private boolean lowRider;
+    private boolean extraSeat;
+    private String type;
 
-    public Bus(String brand,
-               String model,
-               int mileage,
-               int year,
-               double price,
-               String plate,
-               int seats,
-               boolean lowRider) {
+    public Motorcycle(String brand, String model, int mileage,
+                      int year, double price, String plate,
+                      boolean extraSeat, String type) {
         this.brand = brand;
         this.model = model;
         this.mileage = mileage;
@@ -26,8 +21,8 @@ public class Bus {
         this.price = price;
         this.plate = plate;
         this.rent = false;
-        this.seats = seats;
-        this.lowRider = lowRider;
+        this.extraSeat = extraSeat;
+        this.type = type;
     }
 
     public String getBrand() {
@@ -74,11 +69,11 @@ public class Bus {
         this.rent = rent;
     }
 
-    public int getSeats() {
-        return seats;
+    public boolean isExtraSeat() {
+        return extraSeat;
     }
 
-    public boolean isLowRider() {
-        return lowRider;
+    public String getType() {
+        return type;
     }
 }

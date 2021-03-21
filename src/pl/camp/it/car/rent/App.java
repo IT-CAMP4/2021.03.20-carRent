@@ -17,21 +17,23 @@ public class App {
             switch (reader.readLine()) {
                 case "1":
                     gui.showAllCars(database.getCars());
+                    gui.showAllBuses(database.getBuses());
+                    gui.showAllMotorcycles(database.getMotorcycles());
                     break;
                 case "2":
-                    System.out.println("Podaj numer rejestracyjny auta:");
-                    if(database.rentCar(reader.readLine())) {
+                    System.out.println("Podaj numer rejestracyjny pojazd:");
+                    if(database.rentVehicle(reader.readLine())) {
                         System.out.println("Wypożyczono !!");
                     } else {
-                        System.out.println("Nie znaleziono auta lub auto jest już wypożyczone !!");
+                        System.out.println("Nie znaleziono pojazdu lub pojazd jest już wypożyczony !!");
                     }
                     break;
                 case "3":
-                    System.out.println("Podaj numer rejestracyjny auta:");
-                    if(database.returnCar(reader.readLine())) {
+                    System.out.println("Podaj numer rejestracyjny pojazdu:");
+                    if(database.returnVehicle(reader.readLine())) {
                         System.out.println("Oddano !!");
                     } else {
-                        System.out.println("Nie znaleziono auta lub auto jest nie jest wypożyczone !!");
+                        System.out.println("Nie znaleziono pojazdu lub pojazd nie jest wypożyczony !!");
                     }
                     break;
                 case "4":
