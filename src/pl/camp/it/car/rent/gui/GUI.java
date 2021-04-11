@@ -3,16 +3,17 @@ package pl.camp.it.car.rent.gui;
 import pl.camp.it.car.rent.model.Bus;
 import pl.camp.it.car.rent.model.Motorcycle;
 import pl.camp.it.car.rent.model.Vehicle;
+import java.util.List;
 
 public class GUI {
-    public void showMainMenu() {
+    static public void showMainMenu() {
         System.out.println("1. Lista pojazdów");
         System.out.println("2. Wypożycz pojazd");
         System.out.println("3. Oddaj pojazd");
         System.out.println("4. Wyjdź");
     }
 
-    public void showAllVehicles(Vehicle[] vehicles) {
+    static public void showAllVehicles(List<Vehicle> vehicles) {
         for(Vehicle vehicle : vehicles) {
             StringBuilder sb = new StringBuilder();
             sb.append(vehicle.getBrand())
@@ -51,7 +52,7 @@ public class GUI {
         }
     }
 
-    public void showRentResult(boolean rentResult) {
+    static public void showRentResult(boolean rentResult) {
         if(rentResult) {
             System.out.println("Wypożyczono !!");
         } else {
@@ -59,7 +60,7 @@ public class GUI {
         }
     }
 
-    public void showReturnResult(boolean returnResult) {
+    static public void showReturnResult(boolean returnResult) {
         if(returnResult) {
             System.out.println("Oddano !!");
         } else {
