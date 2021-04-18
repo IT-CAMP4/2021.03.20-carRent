@@ -6,14 +6,26 @@ import pl.camp.it.car.rent.model.Vehicle;
 import java.util.List;
 
 public class GUI {
-    static public void showMainMenu() {
+    private static GUI instance = new GUI();
+
+    private GUI() {
+    }
+
+    public static GUI getInstance() {
+        if(GUI.instance == null) {
+            GUI.instance = new GUI();
+        }
+        return GUI.instance;
+    }
+
+    public void showMainMenu() {
         System.out.println("1. Lista pojazdów");
         System.out.println("2. Wypożycz pojazd");
         System.out.println("3. Oddaj pojazd");
         System.out.println("4. Wyjdź");
     }
 
-    static public void showAllVehicles(List<Vehicle> vehicles) {
+    public void showAllVehicles(List<Vehicle> vehicles) {
         for(Vehicle vehicle : vehicles) {
             StringBuilder sb = new StringBuilder();
             sb.append(vehicle.getBrand())
@@ -52,7 +64,7 @@ public class GUI {
         }
     }
 
-    static public void showRentResult(boolean rentResult) {
+    public void showRentResult(boolean rentResult) {
         if(rentResult) {
             System.out.println("Wypożyczono !!");
         } else {
@@ -60,7 +72,7 @@ public class GUI {
         }
     }
 
-    static public void showReturnResult(boolean returnResult) {
+    public void showReturnResult(boolean returnResult) {
         if(returnResult) {
             System.out.println("Oddano !!");
         } else {

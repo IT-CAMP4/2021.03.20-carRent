@@ -1,6 +1,6 @@
 package pl.camp.it.car.rent.model;
 
-public class Vehicle {
+public abstract class Vehicle {
     private String brand;
     private String model;
     private int mileage;
@@ -9,14 +9,14 @@ public class Vehicle {
     private String plate;
     private boolean rent;
 
-    public Vehicle(String brand, String model, int mileage, int year, double price, String plate) {
+    public Vehicle(String brand, String model, int mileage, int year, double price, String plate, boolean rent) {
         this.brand = brand;
         this.model = model;
         this.mileage = mileage;
         this.year = year;
         this.price = price;
         this.plate = plate;
-        this.rent = false;
+        this.rent = rent;
     }
 
     public String getBrand() {
@@ -74,4 +74,6 @@ public class Vehicle {
     public void setRent(boolean rent) {
         this.rent = rent;
     }
+
+    abstract public String convertToDbRecord();
 }

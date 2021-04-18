@@ -20,4 +20,15 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String convertToDbRecord() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("User;")
+                .append(this.login)
+                .append(";")
+                .append(this.password);
+
+        return sb.toString();
+    }
 }
